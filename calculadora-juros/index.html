@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Parcelas com Juros</title>
+</head>
+<body>
+    <h2>Calculadora de Parcelas com Juros</h2>
+    <label for="valorTotal">Valor Total:</label>
+    <input type="number" id="valorTotal" placeholder="Digite o valor total">
+    <br><br>
+    <label for="numParcelas">Número de Parcelas:</label>
+    <input type="number" id="numParcelas" placeholder="Digite o número de parcelas">
+    <br><br>
+    <button onclick="calcularParcelas()">Calcular Parcelas</button>
+    <br><br>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularParcelas() {
+            let valorTotal = parseFloat(document.getElementById('valorTotal').value);
+            let numParcelas = parseInt(document.getElementById('numParcelas').value);
+
+            if (isNaN(valorTotal) || isNaN(numParcelas) || valorTotal <= 0 || numParcelas <= 0) {
+                document.getElementById('resultado').innerText = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            let valorComJuros = valorTotal * 1.20;
+
+            let valorParcela = valorComJuros / numParcelas;
+
+            document.getElementById('resultado').innerText = `O valor total com juros é: R$ ${valorComJuros.toFixed(2)}\ no valor de cada parcela é: R$ ${valorParcela.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
